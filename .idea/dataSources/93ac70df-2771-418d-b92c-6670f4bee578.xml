@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="products@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="products">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="autoshop"/>
+    <schema id="7" parent="1" name="exampledb"/>
+    <schema id="8" parent="1" name="firstpool"/>
+    <schema id="9" parent="1" name="lecture2903"/>
+    <schema id="10" parent="1" name="lr3db"/>
+    <schema id="11" parent="1" name="lrtech"/>
+    <schema id="12" parent="1" name="magaz_zp"/>
+    <schema id="13" parent="1" name="mydbtest"/>
+    <schema id="14" parent="1" name="sys"/>
+    <schema id="15" parent="1" name="testdb"/>
+    <schema id="16" parent="1" name="testjpa"/>
+    <schema id="17" parent="1" name="testlr4bd"/>
+    <schema id="18" parent="1" name="zp"/>
+    <table id="19" parent="2" name="groupofparameter"/>
+    <table id="20" parent="2" name="groupofproduct"/>
+    <table id="21" parent="2" name="groupofproduct_groupofparameter"/>
+    <table id="22" parent="2" name="groups_parameters"/>
+    <table id="23" parent="2" name="parameter"/>
+    <table id="24" parent="2" name="product"/>
+    <table id="25" parent="2" name="product_groups_parameters"/>
+    <column id="26" parent="19" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="19" name="NAME">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="28" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="29" parent="20" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="20" name="NAME">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="31" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="32" parent="21" name="groupsOfProducts_ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="21" name="groupsOfParameter_ID">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="34" parent="21" name="GROUPOFPRODUCTGROUPOFPARAMETERgroupsOfParameter_ID">
+      <ColNames>groupsOfParameter_ID</ColNames>
+    </index>
+    <key id="35" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>groupsOfProducts_ID
+groupsOfParameter_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="36" parent="21" name="GROUPOFPRODUCT_GROUPOFPARAMETERgroupsOfProducts_ID">
+      <ColNames>groupsOfProducts_ID</ColNames>
+      <RefSchemaName>products</RefSchemaName>
+      <RefTableName>groupofproduct</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <foreign-key id="37" parent="21" name="GROUPOFPRODUCTGROUPOFPARAMETERgroupsOfParameter_ID">
+      <ColNames>groupsOfParameter_ID</ColNames>
+      <RefSchemaName>products</RefSchemaName>
+      <RefTableName>groupofparameter</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="38" parent="22" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="22" name="VALUE">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="40" parent="22" name="GROUPOFPARAMETER_ID">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="41" parent="22" name="PARAMETER_ID">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="42" parent="22" name="FK_GROUPS_PARAMETERS_GROUPOFPARAMETER_ID">
+      <ColNames>GROUPOFPARAMETER_ID</ColNames>
+    </index>
+    <index id="43" parent="22" name="FK_GROUPS_PARAMETERS_PARAMETER_ID">
+      <ColNames>PARAMETER_ID</ColNames>
+    </index>
+    <key id="44" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="45" parent="22" name="FK_GROUPS_PARAMETERS_GROUPOFPARAMETER_ID">
+      <ColNames>GROUPOFPARAMETER_ID</ColNames>
+      <RefSchemaName>products</RefSchemaName>
+      <RefTableName>groupofparameter</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <foreign-key id="46" parent="22" name="FK_GROUPS_PARAMETERS_PARAMETER_ID">
+      <ColNames>PARAMETER_ID</ColNames>
+      <RefSchemaName>products</RefSchemaName>
+      <RefTableName>parameter</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="47" parent="23" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="48" parent="23" name="NAME">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="49" parent="23" name="UNIT">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="50" parent="23" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="51" parent="24" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="24" name="DATE">
+      <Position>2</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="53" parent="24" name="DESCRIPTION">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="54" parent="24" name="GROUPOFPRODUCT_ID">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="55" parent="24" name="FK_PRODUCT_GROUPOFPRODUCT_ID">
+      <ColNames>GROUPOFPRODUCT_ID</ColNames>
+    </index>
+    <key id="56" parent="24" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="57" parent="24" name="FK_PRODUCT_GROUPOFPRODUCT_ID">
+      <ColNames>GROUPOFPRODUCT_ID</ColNames>
+      <RefSchemaName>products</RefSchemaName>
+      <RefTableName>groupofproduct</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="58" parent="25" name="products_ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="59" parent="25" name="parameters_ID">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="60" parent="25" name="FK_PRODUCT_GROUPS_PARAMETERS_parameters_ID">
+      <ColNames>parameters_ID</ColNames>
+    </index>
+    <key id="61" parent="25" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>products_ID
+parameters_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="62" parent="25" name="FK_PRODUCT_GROUPS_PARAMETERS_products_ID">
+      <ColNames>products_ID</ColNames>
+      <RefSchemaName>products</RefSchemaName>
+      <RefTableName>product</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <foreign-key id="63" parent="25" name="FK_PRODUCT_GROUPS_PARAMETERS_parameters_ID">
+      <ColNames>parameters_ID</ColNames>
+      <RefSchemaName>products</RefSchemaName>
+      <RefTableName>groups_parameters</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>
