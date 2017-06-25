@@ -3,15 +3,12 @@ package tables;
 import javax.persistence.*;
 import java.util.Collection;
 
-/**
- * Created by user on 23.06.17.
- */
 @Entity
-@NamedQueries(
-        //@NamedQuery(name = "GroupOfProduct.getParameters", query = "SELECT gpr.groupsOfParameter FROM GroupOfProduct gpr")
-        @NamedQuery(name = "GroupOfProduct.getParameters", query = "SELECT par from Groups_Parameters g_p, GroupOfParameter gpar, Parameter par, GroupOfProduct gprod " +
-                "WHERE g_p.groupOfParameter=gpar AND g_p.parameter=par AND gprod.groupsOfParameter=g_p.groupOfParameter AND gprod.name=:name")
-)
+@NamedQueries({
+        @NamedQuery(name = "GroupOfProduct.getParameters", query ="select par FROM GroupOfProduct gprod, GroupOfParameter gparam, Parameter par WHERE gparam=gprod.groupsOfParameter AND par=gparam.parameters AND gprod.name=:name"),
+        @NamedQuery(name = "GroupOfProduct.FindByProductName",
+                query = "SELECT gpr FROM GroupOfProduct gpr, Product p WHERE p.description=:productName AND gpr.products=p")
+})
 public class GroupOfProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

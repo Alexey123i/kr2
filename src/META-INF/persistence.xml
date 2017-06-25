@@ -2,12 +2,12 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
     <persistence-unit name="NewPersistenceUnit" transaction-type="JTA">
-        <jta-data-source>jdbc/products</jta-data-source>
+        <jta-data-source>jdbc/jpatest</jta-data-source>
         <class>tables.Parameter</class>
         <class>tables.Product</class>
         <class>tables.GroupOfProduct</class>
         <class>tables.GroupOfParameter</class>
-        <class>tables.Groups_Parameters</class>
+        <class>tables.ParameterValue</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="create"/>

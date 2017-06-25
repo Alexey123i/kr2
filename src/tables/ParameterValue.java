@@ -3,11 +3,8 @@ package tables;
 import javax.persistence.*;
 import java.util.Collection;
 
-/**
- * Created by user on 23.06.17.
- */
 @Entity
-public class Groups_Parameters {
+public class ParameterValue {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -17,18 +14,7 @@ public class Groups_Parameters {
     private String Value;
 
     @ManyToOne
-    private GroupOfParameter groupOfParameter;
-
-    @ManyToOne
     private Parameter parameter;
-
-    public GroupOfParameter getGroupOfParameter() {
-        return groupOfParameter;
-    }
-
-    public void setGroupOfParameter(GroupOfParameter groupOfParameter) {
-        this.groupOfParameter = groupOfParameter;
-    }
 
     public Parameter getParameter() {
         return parameter;

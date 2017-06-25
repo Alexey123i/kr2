@@ -5,49 +5,39 @@ import tables.GroupOfProduct;
 import tables.Parameter;
 
 import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.inject.Named;
+import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Set;
 
-/**
- * Created by Alexey on 22.06.2017.
- */
-@Named
+@ManagedBean
 @SessionScoped
 public class GroupOfProductBean {
+    
     @EJB
     private
     GroupOfProductDAO groupOfProductDAO;
 
     GroupOfProduct tmpGroupOfProduct = new GroupOfProduct();
 
-    public HashSet<Parameter> getGroupOfProduct() {
-        return new HashSet<Parameter>(groupOfProductDAO.findAll(tmpGroupOfProduct.getName()));
+    private String name;
+
+    public String getName() {
+        return name;
     }
 
-    public GroupOfProduct getTmpGroupOfProduct() {
-        return tmpGroupOfProduct;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setTmpGroupOfProduct(GroupOfProduct tmpGroupOfProduct) {
-        this.tmpGroupOfProduct = tmpGroupOfProduct;
+    public void grByName() {
+        System.out.println(name);
+        list=new HashSet<>(groupOfProductDAO.findAll(name));
+        System.out.println(list.size());
     }
 
-    public GroupOfProductDAO getGroupOfProductDAO() {
-        return groupOfProductDAO;
-    }
-
-    public void setGroupOfProductDAO(GroupOfProductDAO groupOfProductDAO) {
-        this.groupOfProductDAO = groupOfProductDAO;
-    }
-
-    public String grByName() {
-        this.list=getGroupOfProduct();
-        return null;
-    }
-
-    HashSet<Parameter> list;
+    private HashSet<Parameter> list = new HashSet<>();
 
     public HashSet<Parameter> getList() {
         return list;

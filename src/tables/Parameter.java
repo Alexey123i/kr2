@@ -3,9 +3,6 @@ package tables;
 import javax.persistence.*;
 import java.util.Collection;
 
-/**
- * Created by user on 23.06.17.
- */
 @Entity
 public class Parameter {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,13 +40,24 @@ public class Parameter {
     }
 
     @OneToMany(mappedBy = "parameter")
-    private Collection<Groups_Parameters> groups_parameters;
+    private Collection<ParameterValue> groups_parameters;
 
-    public Collection<Groups_Parameters> getGroups_parameters() {
+    public Collection<ParameterValue> getGroups_parameters() {
         return groups_parameters;
     }
 
-    public void setGroups_parameters(Collection<Groups_Parameters> groups_parameters) {
+    public void setGroups_parameters(Collection<ParameterValue> groups_parameters) {
         this.groups_parameters = groups_parameters;
+    }
+
+    @ManyToOne(optional = false)
+    private GroupOfParameter groupOfParameter;
+
+    public GroupOfParameter getGroupOfParameter() {
+        return groupOfParameter;
+    }
+
+    public void setGroupOfParameter(GroupOfParameter groupOfParameter) {
+        this.groupOfParameter = groupOfParameter;
     }
 }

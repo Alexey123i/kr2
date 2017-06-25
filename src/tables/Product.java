@@ -4,14 +4,23 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 
-/**
- * Created by user on 23.06.17.
- */
 @Entity
-@NamedQueries(
-        //@NamedQuery(name = "Product.FindAll", query = "SELECT p FROM Product p")
-        @NamedQuery(name = "Product.FindNotParam", query = "Select gp.products FROM Groups_Parameters gp WHERE gp.id<>2")
-)
+@NamedQueries({
+        @NamedQuery(name = "Product.FindAll",
+                    query = "SELECT p FROM Product p"),
+
+        @NamedQuery(name = "Product.FindWithParametr",
+                    query = "SELECT p from GroupOfParameter gpar, Parameter par, GroupOfProduct gpr, Product p " +
+                            "WHERE gpr=p.groupOfProduct AND gpar=gpr.groupsOfParameter AND par=gpar.parameters AND par.name=:parameterName"),
+
+        @NamedQuery(name = "Product.FindByGroup",
+                    query = "SELECT p FROM Product p, GroupOfProduct gpr WHERE gpr.name=:groupName AND p=gpr.products"),
+
+        @NamedQuery(name = "Product.FindByName",
+                query = "SELECT p FROM Product p WHERE p.description=:productName"),
+
+
+})
 public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -59,13 +68,13 @@ public class Product {
     }
 
     @ManyToMany
-    private Collection<Groups_Parameters> parameters;
+    private Collection<ParameterValue> parameters;
 
-    public Collection<Groups_Parameters> getParameters() {
+    public Collection<ParameterValue> getParameters() {
         return parameters;
     }
 
-    public void setParameters(Collection<Groups_Parameters> parameters) {
+    public void setParameters(Collection<ParameterValue> parameters) {
         this.parameters = parameters;
     }
 }
